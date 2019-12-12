@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:meta/meta.dart';
 import 'package:poke_app/src/remote/models/pokemons_response.dart';
 
 abstract class PokemonsState extends Equatable {
@@ -7,16 +8,15 @@ abstract class PokemonsState extends Equatable {
 }
 
 class WithoutPokemonsState extends PokemonsState {
-  List<Results> pokemons = [];
+  final List<Results> pokemons = [];
 
   @override
   List<Object> get props => [pokemons];
 }
 
 class WithPokemonsState extends PokemonsState {
-  List<Results> pokemons;
-  int amount;
-
+  final List<Results> pokemons;
+  final int amount;
 
   WithPokemonsState({@required this.pokemons, @required this.amount});
 

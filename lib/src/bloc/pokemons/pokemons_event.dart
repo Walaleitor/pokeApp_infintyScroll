@@ -7,8 +7,4 @@ abstract class PokemonsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class AddMorePokemons extends PokemonsEvent{
-  int offset;
-
-  AddMorePokemons();  
-}
+class AddMorePokemons extends PokemonsEvent {}

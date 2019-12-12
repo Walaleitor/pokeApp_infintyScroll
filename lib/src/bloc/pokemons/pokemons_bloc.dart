@@ -21,7 +21,9 @@ class PokemonsBloc extends Bloc<PokemonsEvent, PokemonsState> {
       try {
         final pokemons = await this.pokemonRepository.fetchPokemons();
         yield (WithPokemonsState(pokemons: pokemons, amount: pokemons.length));
-      } catch (error) {}
+      } catch (error) {
+        print(error);
+      }
     }
   }
 }

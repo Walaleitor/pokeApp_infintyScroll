@@ -6,16 +6,17 @@ class PokemonRepository {
   List<Results> pokemons = [];
   int count = 0;
 
-  Future<List<Results>> fetchPokemons({int offset = 0}) async {
+  Future<List<Results>> fetchPokemons() async {
+    if (count == 880) return this.pokemons;
+
     if (this.pokemons.isEmpty) {
       this.pokemons.addAll(await apiProvider.fetchPokemons());
-      count += pokemons.length;
+      this.count = this.pokemons.length;
       return pokemons;
     }
-    
-    this.pokemons.addAll(await apiProvider.fetchPokemons( offset: this.count));
-    count += pokemons.length;
-    return pokemons;
 
+    this.pokemons.addAll(await apiProvider.fetchPokemons(offset: this.count));
+    this.count = this.pokemons.length;
+    return pokemons;
   }
 }
